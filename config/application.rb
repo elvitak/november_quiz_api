@@ -34,6 +34,9 @@ module NovemberQuizApi
       generate.request_specs false
     end
 
+    config.stripe.secret_key = Rails.application.credentials.dig(:stripe, :secret_key)
+    config.stripe.publishable_key = Rails.application.credentials.dig(:stripe, :publishable_key)
+
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
