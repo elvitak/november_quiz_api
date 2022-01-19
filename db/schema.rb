@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_15_102928) do
+ActiveRecord::Schema.define(version: 2022_01_19_095013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "editions", force: :cascade do |t|
+    t.string "city"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude"
+    t.float "longitude"
+  end
+
+  create_table "foos", force: :cascade do |t|
+    t.string "name"
+    t.bigint "edition_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["edition_id"], name: "index_foos_on_edition_id"
+  end
 
   create_table "quiz_categories", force: :cascade do |t|
     t.integer "api_id"
@@ -30,4 +46,14 @@ ActiveRecord::Schema.define(version: 2021_12_15_102928) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "address"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude"
+    t.float "longitude"
+  end
+
+  add_foreign_key "foos", "editions"
 end

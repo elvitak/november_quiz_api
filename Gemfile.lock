@@ -80,6 +80,7 @@ GEM
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
     ffi (1.15.4)
+    geocoder (1.7.3)
     globalid (1.0.0)
       activesupport (>= 5.0)
     hashdiff (1.0.1)
@@ -212,6 +213,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.4)
   factory_bot_rails
+  geocoder
   listen (~> 3.3)
   pg (~> 1.1)
   pry-rails
